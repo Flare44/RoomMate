@@ -23,5 +23,8 @@
 hs_err_pid*
 replay_pid*
 
-# IDE files
+# IDE configuration
 .idea
+
+# Gradle configuration
+.gradle

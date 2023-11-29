@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="de.propra.web.UserControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-11-29T13:03:55" hostname="DESKTOP-U77NR89" time="0.811">
+  <properties/>
+  <testcase name="URL 'roommate/user/start' is available and returns the expected view" classname="de.propra.web.UserControllerTest" time="0.797"/>
+  <testcase name="URL 'roommate/user/bookings' is available and returns the expected view" classname="de.propra.web.UserControllerTest" time="0.008"/>
+  <testcase name="URL 'roommate/user/bookings/new' is available and returns the expected view" classname="de.propra.web.UserControllerTest" time="0.004"/>
+  <system-out><![CDATA[14:03:54.343 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [de.propra.web.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:03:54.441 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration de.propra.RoomMateApplication for test class de.propra.web.UserControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2023-11-29T14:03:54.710+01:00  INFO 16280 --- [    Test worker] de.propra.web.UserControllerTest         : Starting UserControllerTest using Java 19.0.1 with PID 16280 (started by morit in C:\Users\morit\Desktop\WiSe 2023_24\RoomMate)
+2023-11-29T14:03:54.711+01:00  INFO 16280 --- [    Test worker] de.propra.web.UserControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2023-11-29T14:03:55.366+01:00  INFO 16280 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-11-29T14:03:55.366+01:00  INFO 16280 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-11-29T14:03:55.368+01:00  INFO 16280 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-11-29T14:03:55.392+01:00  INFO 16280 --- [    Test worker] de.propra.web.UserControllerTest         : Started UserControllerTest in 0.898 seconds (process running for 1.723)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
