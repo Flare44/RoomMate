@@ -43,29 +43,29 @@
         <p style="font-size: 50px; margin-bottom: 50px; font-weight: bold">Wählen Sie Ihre Konfigurationen</p>
 
 
-        <div style="display: flex; justify-content: center; align-items: center; background-color: #313539; border-radius: 15px; width: 80%;">
+        <div style="display: flex; justify-content: center; align-items: center; background-color: #313539; border-radius: 15px; width: 80%;" th:object="${information}">
             <form action="/roommate/user/bookings/new">
                 <div style="display: flex; gap: 15px; padding-top: 20px; padding-bottom: 20px;">
                     <div class="form-group">
                         <label for="start-time">Von</label>
-                        <input type="datetime-local" class="form-control" id="start-time">
+                        <input type="datetime-local" class="form-control" id="start-time" th:field="*{startTime}">
                     </div>
                     <div class="form-group">
                         <label for="end-time">Bis</label>
-                        <input type="datetime-local" class="form-control" id="end-time">
+                        <input type="datetime-local" class="form-control" id="end-time" th:field="*{endTime}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="room-selection">Raum</label>
-                    <select class="form-control" id="room-selection">
-                        <option></option>
-                        <option th:each="room : ${rooms}" th:text="${room}"></option>
+                    <select class="form-control" id="room-selection" th:field="*{room}">
+                        <option value=""></option>
+                        <option th:each="item : ${rooms}" th:text="${item}" th:value="${item.id}"></option>
                     </select>
                 </div>
                 <div class="form-group" style="padding-top: 20px; padding-bottom: 20px">
                     <label for="equipment-selection">Ausstattung</label>
-                    <select multiple class="form-control" id="equipment-selection">
-                        <option th:each="item : ${equipment}" th:text="${item}"></option>
+                    <select multiple class="form-control" id="equipment-selection" th:field="*{equipment}">
+                        <option th:each="item : ${equipment}" th:text="${item}" th:value="${item}"></option>
                     </select>
                 </div>
                 <div class="form-group" style="display: flex; align-items: center; justify-content: center; padding-bottom: 50px; padding-top: 20px">

@@ -1,6 +1,7 @@
 package de.propra.domain;
 
 public class Room {
+
     private final Long id;
     private final String name;
     private final Long workplaces;
@@ -10,6 +11,19 @@ public class Room {
         this.name = name;
         this.workplaces = workplaces;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getWorkplaces() {
+        return workplaces;
+    }
+
 
     @Override
     public String toString() {

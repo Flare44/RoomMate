@@ -21,4 +21,14 @@ public enum Equipment {
                 .map(value -> value.name)
                 .toList();
     }
+
+    /*
+    public String getName() {
+        return name;
+    }
+
+     */
+
+
+
 }

@@ -17,5 +17,9 @@ public class RoomService {
     public List<Room> getAllRooms() {
         return repository.getAllRooms();
     }
+    public boolean roomIsAvailable(String roomName) {
+        return repository.getAllRooms().stream()
+                .anyMatch(room -> room.getName().equals(roomName));
+    }
 
 }

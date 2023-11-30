@@ -1,23 +1,22 @@
 package de.propra.domain;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class BookingInformation {
 
 
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private Room room;
+    @NotNull
+    private @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") LocalDateTime startTime;
+    @NotNull
+    private @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") LocalDateTime endTime;
+
+    private String room;
 
     private List<Equipment> equipment;
-
-    public BookingInformation(LocalDateTime startTime, LocalDateTime endTime, Room room, List<Equipment> equipment) {
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.room = room;
-        this.equipment = equipment;
-    }
 
 
     public LocalDateTime getStartTime() {
@@ -36,11 +35,11 @@ public class BookingInformation {
         this.endTime = endTime;
     }
 
-    public Room getRoom() {
+    public String getRoom() {
         return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(String room) {
         this.room = room;
     }
 
@@ -51,6 +50,7 @@ public class BookingInformation {
     public void setEquipment(List<Equipment> equipment) {
         this.equipment = equipment;
     }
+
 
     @Override
     public String toString() {
