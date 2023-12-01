@@ -22,12 +22,12 @@ public enum Equipment {
                 .toList();
     }
 
-    /*
+
     public String getName() {
         return name;
     }
 
-     */
+
 
 
 

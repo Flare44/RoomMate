@@ -9,6 +9,7 @@ public class Workplace {
     private final Long id;
     private final Long roomId;
     private final List<Equipment> equipment = new ArrayList<>();
+    private final List<TimeSpan> bookedTimeSpans = new ArrayList<>();
 
     public Workplace(Long id, Long roomId) {
         this.id = id;
@@ -37,5 +38,9 @@ public class Workplace {
 
     public List<Equipment> getEquipment() {
         return equipment;
+    }
+
+    public List<TimeSpan> getBookedTimeSpans() {
+        return bookedTimeSpans;
     }
 }

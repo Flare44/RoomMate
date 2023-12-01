@@ -43,9 +43,11 @@ public class UserController {
 
     @GetMapping("/bookings/new")
     public String add(Model model, @Valid @ModelAttribute("information") BookingInformation information, BindingResult bindingResult) {
+        /*
         if(bindingResult.hasErrors()) {
             return "user/new";
         }
+        */
 
         model.addAttribute("rooms", roomService.getAllRooms());
         model.addAttribute("equipment", values());

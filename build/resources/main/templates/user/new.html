@@ -65,7 +65,7 @@
                 <div class="form-group" style="padding-top: 20px; padding-bottom: 20px">
                     <label for="equipment-selection">Ausstattung</label>
                     <select multiple class="form-control" id="equipment-selection" th:field="*{equipment}">
-                        <option th:each="item : ${equipment}" th:text="${item}" th:value="${item}"></option>
+                        <option th:each="item : ${equipment}" th:text="${item.name}" th:value="${item}"></option>
                     </select>
                 </div>
                 <div class="form-group" style="display: flex; align-items: center; justify-content: center; padding-bottom: 50px; padding-top: 20px">
