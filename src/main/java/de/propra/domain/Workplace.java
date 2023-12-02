@@ -22,11 +22,14 @@ public class Workplace {
         this.equipment.addAll(equipment);
     }
 
-    public Workplace(Long id, Long roomId, Equipment... equipment) {
+    public Workplace(Long id, Long roomId, List<Equipment> equipment, List<TimeSpan> bookedTimeSpans) {
         this.id = id;
         this.roomId = roomId;
-        this.equipment.addAll(Arrays.asList(equipment));
+        this.equipment.addAll(equipment);
+        this.bookedTimeSpans.addAll(bookedTimeSpans);
     }
+
+
 
     public Long getId() {
         return id;
@@ -42,5 +45,15 @@ public class Workplace {
 
     public List<TimeSpan> getBookedTimeSpans() {
         return bookedTimeSpans;
+    }
+
+    @Override
+    public String toString() {
+        return "Workplace{" +
+                "id=" + id +
+                ", roomId=" + roomId +
+                ", equipment=" + equipment +
+                ", bookedTimeSpans=" + bookedTimeSpans +
+                '}';
     }
 }

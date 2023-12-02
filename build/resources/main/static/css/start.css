@@ -1,21 +1,13 @@
-.gradient-heading {
-    background: linear-gradient(to right, #ffcc00, #ff3300);
-    color: #fff3cd;
-    padding: 20px;
-    text-align: center;
-    margin: 0;
-}
-
 .gradient-text {
-    background: linear-gradient(to right, #F087FF, #7A29D3, #1FCFF1); /* Ändern Sie die Farben nach Bedarf */
-    -webkit-background-clip: text; /* Webkit-Browser (Chrome, Safari, etc.) */
-    background-clip: text; /* Standard */
-    color: transparent; /* Textfarbe wird transparent gesetzt, um den Hintergrund durchscheinen zu lassen */
+    background: linear-gradient(to right, #F087FF, #7A29D3, #1FCFF1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     font-size: 120px;
-    font-weight: bold; /* Schriftstärke */
+    font-weight: bold;
 }
 
 .gradient-background {
-    background: linear-gradient(to right, #7A29D3, #1FCFF1); /* Ändern Sie die Farben nach Bedarf */
-    color: transparent; /* Textfarbe wird transparent gesetzt, um den Hintergrund durchscheinen zu lassen */
+    background: linear-gradient(to right, #7A29D3, #1FCFF1);
+    color: transparent;
 }

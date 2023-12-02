@@ -10,9 +10,9 @@ public class BookingInformation {
 
 
     @NotNull
-    private @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") LocalDateTime startTime;
+    private @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime startTime;
     @NotNull
-    private @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm") LocalDateTime endTime;
+    private @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime endTime;
 
     private String room;
 

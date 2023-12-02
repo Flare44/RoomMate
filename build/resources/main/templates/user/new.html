@@ -43,8 +43,8 @@
         <p style="font-size: 50px; margin-bottom: 50px; font-weight: bold">Wählen Sie Ihre Konfigurationen</p>
 
 
-        <div style="display: flex; justify-content: center; align-items: center; background-color: #313539; border-radius: 15px; width: 80%;" th:object="${information}">
-            <form action="/roommate/user/bookings/new">
+        <div style="display: flex; justify-content: center; align-items: center; border-color: #4d5154; border-width: 1px; border-style: solid; border-radius: 15px; width: 80%;" th:object="${information}">
+            <form action="/roommate/user/bookings/new" method="post">
                 <div style="display: flex; gap: 15px; padding-top: 20px; padding-bottom: 20px;">
                     <div class="form-group">
                         <label for="start-time">Von</label>
@@ -69,7 +69,7 @@
                     </select>
                 </div>
                 <div class="form-group" style="display: flex; align-items: center; justify-content: center; padding-bottom: 50px; padding-top: 20px">
-                    <button type="submit" class="btn btn-dark">Platz suchen</button>
+                    <button type="submit" class="btn btn-dark" style="border-color: #4d5154; border-style: solid">Platz suchen</button>
                 </div>
             </form>
         </div>
@@ -88,7 +88,13 @@
                     <tr th:each="workplace: ${workplaces}">
                         <th th:text="${workplace.id}">ID</th>
                         <th th:text="${workplace.roomId}">RaumId</th>
-                        <th th:text="${workplace.equipment}">Ausstattung</th>
+                        <th>
+                            <span th:each="equip, equipIter: ${workplace.equipment}">
+                                <span th:text="${T(de.propra.domain.Equipment).getActualName(equip)}"></span>
+                                <span th:if="${!equipIter.last}">, </span>
+                            </span>
+                        </th>
+                        <th><a type="button" class="btn btn-outline-success" th:value="${workplace.id}" th:href="@{/roommate/user/bookings/new/confirm}">Buchen</a></th>
                     </tr>
                 </tbody>
             </table>

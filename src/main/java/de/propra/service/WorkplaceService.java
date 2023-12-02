@@ -6,8 +6,10 @@ import de.propra.domain.Workplace;
 import de.propra.domain.WorkplaceRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
@@ -48,6 +50,27 @@ public class WorkplaceService {
         return false;
     }
 
+    public List<Workplace> getAvailableWorkplaces(TimeSpan timeSpan) {
+        List<Workplace> workplaces = repository.getAllWorkplaces().stream()
+                .filter(workplace -> workplace.getBookedTimeSpans().stream()
+                        .allMatch(timespan -> timespan.getEndTime().isBefore(timeSpan.getStartTime()) || timespan.getStartTime().isAfter(timeSpan.getEndTime()))
+                ).toList();
+
+
+        // wenn wir keinen Zeitraum haben, dann ist der Arbeitsplatz ja auch vorhanden
+//        workplaces.addAll(repository.getAllWorkplaces().stream()
+//                .filter(workplace -> workplace.getBookedTimeSpans().isEmpty())
+//                .toList());
+
+        return workplaces;
+    }
+
+    public List<Workplace> getAvailableWorkplaces(TimeSpan timeSpan, List<Equipment> equipment) {
+        return getAvailableWorkplaces(timeSpan).stream()
+                .filter(workplace -> workplace.getEquipment().containsAll(equipment))
+                .toList();
+    }
+
     private boolean workplaceIsAvailable(Long id, TimeSpan timeSpan) {
         List<TimeSpan> timeSpans = repository.getAllWorkplaces().stream()
                 .filter(workplace -> workplace.getId().equals(id))
@@ -58,4 +81,5 @@ public class WorkplaceService {
         return timeSpans.stream()
                 .allMatch(timespan -> timespan.getEndTime().isBefore(timeSpan.getStartTime()) || timespan.getStartTime().isAfter(timeSpan.getEndTime()));
     }
+
 }

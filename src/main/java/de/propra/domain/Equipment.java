@@ -27,7 +27,9 @@ public enum Equipment {
         return name;
     }
 
-
+    public static String getActualName(Equipment equipment) {
+        return equipment.name;
+    }
 
 
 
