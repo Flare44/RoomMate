@@ -97,7 +97,11 @@
                                 <span th:if="${!equipIter.last}">, </span>
                             </span>
                         </th>
-                        <th><a type="button" class="btn btn-outline-success" th:value="${workplace.id}" th:href="@{/roommate/user/bookings/new/confirm}">Buchen</a></th>
+                        <th><a type="button" class="btn btn-outline-success" th:value="${workplace.id}"
+                               th:href="@{/roommate/user/bookings/new/confirm/{workplaceId}(workplaceId=${workplace.id}, roomName=${workplace.assignedRoom}, roomId=${workplace.assignedRoom.id}, startTime=${information.startTime}, endTime=${information.endTime}, equipmentList=${information.equipment})}"
+                                >Buchen
+                            </a>
+                        </th>
                     </tr>
                 </tbody>
             </table>

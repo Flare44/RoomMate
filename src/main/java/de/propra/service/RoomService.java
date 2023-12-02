@@ -22,4 +22,11 @@ public class RoomService {
                 .anyMatch(room -> room.getName().equals(roomName));
     }
 
+
+    public String getRoomName(Long id) {
+        return repository.getAllRooms().stream()
+                .filter(room -> room.getId().equals(id))
+                .findFirst().orElseThrow().getName();
+    }
+
 }

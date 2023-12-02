@@ -3,12 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Confirm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="background-color: #212529; color: white">
     <main>
-        <p>Buchungsinformationen</p>
-        <button>Zurück</button>
-        <button>Bestätigen</button>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h1>Buchung bestätigen</h1>
+            <h2>Bestätigen Sie die Buchung für den folgenden Platz oder brechen Sie den Vorgang ab</h2>
+            <p>(Platz-ID) in dem Raum (Raum-Name (Raum-ID)) mit der Ausstattung: [Platz-Ausstattung] in dem Zeitraum von __ bis __ buchen?</p>
+
+            <div class="card w-50" style="border: none; background-color: #212529">
+                <div class="card-body" style="background-color: #212529; border-color: #4d5154; border-style: solid; border-width: 1px; border-radius: 15px;">
+                    <h5 class="card-title" style="color:white;" th:text="'Platz-ID: ' + ${workplaceId} ">Platz-ID</h5>
+                    <h5 style="color:white;" th:text="'Raum: ' + ${roomName} + ' (ID: ' + ${roomId} + ')'">Raum-Name</h5>
+                    <p class="card-text" style="color:white;" th:each="equip: ${equipmentList}" th:text="${equip.name}">Equipment</p>
+                    <p class="card-text" style="color:white;" th:text="${equipmentList}">Equipment</p>
+                    <p class="card-text" style="color:white;" th:text="'Von: ' + ${startTime}">StartTime</p>
+                    <p class="card-text" style="color:white;"  th:text="'Bis: ' + ${endTime}">EndTime</p>
+                    <div>
+                        <a type="button" class="btn btn-danger" th:href="@{/roommate/user/bookings}">Abbrechen</a>
+                        <form method="post" th:action="@{/roommate/user/bookings/new/confirm}">
+                            <input type="hidden" th:value="${workplaceId}" name="workplaceId">
+                            <input type="hidden" th:value="${startTime}" name="startTime">
+                            <input type="hidden" th:value="${endTime}" name="endTime">
+                            <button type="submit" class="btn btn-outline-success">Bestätigen</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </main>
 </body>
 </html>

@@ -1,9 +1,6 @@
 package de.propra.service;
 
-import de.propra.domain.Equipment;
-import de.propra.domain.TimeSpan;
-import de.propra.domain.Workplace;
-import de.propra.domain.WorkplaceRepository;
+import de.propra.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.sql.Time;
@@ -24,31 +21,20 @@ public class WorkplaceService {
         return repository.getAllWorkplaces();
     }
 
-    public Workplace getWorkplace(Long id) throws Exception {
-        return repository.getAllWorkplaces().stream()
-                .filter(workplace -> workplace.getId() == id)
-                .findFirst()
-                .orElseThrow(Exception::new);
-    }
+//    public Workplace getWorkplace(Long id) throws Exception {
+//        return repository.getAllWorkplaces().stream()
+//                .filter(workplace -> workplace.getId() == id)
+//                .findFirst()
+//                .orElseThrow(Exception::new);
+//    }
+//
+//    public List<Workplace> getWorkplacesWithEquipment(List<Equipment> equipment) {
+//        return repository.getAllWorkplaces().stream()
+//                .filter(workplace -> new HashSet<>(workplace.getEquipment()).containsAll(equipment))
+//                .toList();
+//    }
 
-    public List<Workplace> getWorkplacesWithEquipment(List<Equipment> equipment) {
-        return repository.getAllWorkplaces().stream()
-                .filter(workplace -> new HashSet<>(workplace.getEquipment()).containsAll(equipment))
-                .toList();
-    }
 
-    public boolean addBooking(Long id, TimeSpan timeSpan) {
-        if(workplaceIsAvailable(id, timeSpan)) {
-            // add
-            List<TimeSpan> timeSpans = repository.getAllWorkplaces().stream()
-                    .filter(workplace -> workplace.getId().equals(id))
-                    .findFirst().get().getBookedTimeSpans();
-            timeSpans.add(timeSpan);
-            return true;
-        }
-
-        return false;
-    }
 
     public List<Workplace> getAvailableWorkplaces(TimeSpan timeSpan) {
         List<Workplace> workplaces = repository.getAllWorkplaces().stream()
@@ -92,6 +78,19 @@ public class WorkplaceService {
 
         return timeSpans.stream()
                 .allMatch(timespan -> timespan.getEndTime().isBefore(timeSpan.getStartTime()) || timespan.getStartTime().isAfter(timeSpan.getEndTime()));
+    }
+
+
+    public boolean addBooking(Long workplaceId, TimeSpan timeSpan) {
+        if(workplaceIsAvailable(workplaceId, timeSpan)) {
+            // add
+            List<TimeSpan> timeSpans = repository.getAllWorkplaces().stream()
+                    .filter(workplace -> workplace.getId().equals(workplaceId))
+                    .findFirst().get().getBookedTimeSpans();
+            timeSpans.add(timeSpan);
+            return true;
+        }
+        return false;
     }
 
 }
