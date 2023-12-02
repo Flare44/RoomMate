@@ -79,15 +79,18 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Raum ID</th>
+                        <th scope="col">Platz-ID</th>
+                        <th scope="col">Raum-Name</th>
+                        <th scope="col">Raum-ID</th>
                         <th scope="col">Ausstattung</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="workplace: ${workplaces}">
                         <th th:text="${workplace.id}">ID</th>
-                        <th th:text="${workplace.roomId}">RaumId</th>
+                        <th th:text="${workplace.assignedRoom}">Raum-Name</th>
+                        <th th:text="${workplace.assignedRoom.id}">Raum-ID</th>
                         <th>
                             <span th:each="equip, equipIter: ${workplace.equipment}">
                                 <span th:text="${T(de.propra.domain.Equipment).getActualName(equip)}"></span>

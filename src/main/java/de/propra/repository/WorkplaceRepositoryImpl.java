@@ -31,7 +31,7 @@ public class WorkplaceRepositoryImpl implements WorkplaceRepository {
         for(long j = 1; j <= allRooms.size(); j++) {
             for(long i = 1; i <= allRooms.get((int) j - 1).getWorkplaces(); i++) {
                 // so oft erstelle ich Workplaces pro Raum
-                workplaces.add(new Workplace(id, j, generateExampleEquipment(), generateExampleTimespans()));
+                workplaces.add(new Workplace(id, allRooms.get((int) j - 1), generateExampleEquipment(), generateExampleTimespans()));
                 id++;
             }
         }

@@ -4,7 +4,6 @@ import de.propra.domain.*;
 import de.propra.service.RoomService;
 import de.propra.service.WorkplaceService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.Arrays;
 import java.util.List;
 
-import static de.propra.domain.Equipment.getEquipment;
 import static de.propra.domain.Equipment.values;
 
 @Controller
@@ -52,40 +50,48 @@ public class UserController {
     }
 
     @GetMapping("/bookings/new")
-    public String add(Model model, @Valid @ModelAttribute("information") BookingInformation information, BindingResult bindingResult) {
-        System.out.println("GET-MAPPING bei /bookings/new");
-
+    public String add(@ModelAttribute("information") BookingInformation information) {
         return "user/new";
     }
 
     @PostMapping("/bookings/new")
     public RedirectView addForm(@Valid @ModelAttribute("information") BookingInformation information, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        System.out.println("POST-MAPPING bei /bookings/new");
         if(bindingResult.hasErrors()) {
             return new RedirectView("/roommate/user/bookings/new");
         }
 
-        TimeSpan timeSpan = new TimeSpan(information.getStartTime(), information.getEndTime());
-        List<Workplace> availableWorkplaces;
-
-        if (information.getEquipment() == null) {
-            availableWorkplaces = workplaceService.getAvailableWorkplaces(timeSpan);
-        }
-        else {
-            availableWorkplaces = workplaceService.getAvailableWorkplaces(timeSpan, information.getEquipment());
-        }
-
-
         redirectAttributes.addFlashAttribute("information", information);
-        redirectAttributes.addFlashAttribute("workplaces", availableWorkplaces);
+        redirectAttributes.addFlashAttribute("workplaces", getAvailableWorkplaces(information));
 
         return new RedirectView("/roommate/user/bookings/new");
     }
 
+    // TODO: Implement
     @GetMapping("/bookings/new/confirm")
     public String confirmBooking() {
-
-
         return "user/confirm";
+    }
+
+
+
+
+
+
+
+
+    private List<Workplace> getAvailableWorkplaces(BookingInformation information) {
+        TimeSpan timeSpan = new TimeSpan(information.getStartTime(), information.getEndTime());
+        List<Workplace> availableWorkplaces;
+
+        if (information.getEquipment() == null && !information.getRoom().equals("")) {
+            availableWorkplaces = workplaceService.getAvailableWorkplaces(timeSpan, Long.parseLong(information.getRoom())); // Raum aber nicht Equip
+        } else if(information.getEquipment() == null && information.getRoom().equals("")){
+            availableWorkplaces = workplaceService.getAvailableWorkplaces(timeSpan); // Kein Raum und kein Equip
+        } else if(information.getEquipment() != null && information.getRoom().equals("")) {
+            availableWorkplaces = workplaceService.getAvailableWorkplaces(timeSpan, information.getEquipment()); // Equip aber kein Raum
+        } else {
+            availableWorkplaces = workplaceService.getAvailableWorkplaces(timeSpan, information.getEquipment(), Long.parseLong(information.getRoom())); // Raum und Equip
+        }
+        return availableWorkplaces;
     }
 }

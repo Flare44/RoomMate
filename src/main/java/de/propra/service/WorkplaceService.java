@@ -71,6 +71,18 @@ public class WorkplaceService {
                 .toList();
     }
 
+    public List<Workplace> getAvailableWorkplaces(TimeSpan timeSpan, Long roomId) {
+        return getAvailableWorkplaces(timeSpan).stream()
+                .filter(workplace -> workplace.getAssignedRoom().getId().equals(roomId))
+                .toList();
+    }
+
+    public List<Workplace> getAvailableWorkplaces(TimeSpan timeSpan, List<Equipment> equipment, Long roomId) {
+        return getAvailableWorkplaces(timeSpan, equipment).stream()
+                .filter(workplace -> workplace.getAssignedRoom().getId().equals(roomId))
+                .toList();
+    }
+
     private boolean workplaceIsAvailable(Long id, TimeSpan timeSpan) {
         List<TimeSpan> timeSpans = repository.getAllWorkplaces().stream()
                 .filter(workplace -> workplace.getId().equals(id))
