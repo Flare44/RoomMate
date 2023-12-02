@@ -49,10 +49,12 @@
                     <div class="form-group">
                         <label for="start-time">Von</label>
                         <input type="datetime-local" class="form-control" id="start-time" th:field="*{startTime}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('startTime')}" th:errors="*{startTime}">Fehlernachricht</small>
                     </div>
                     <div class="form-group">
                         <label for="end-time">Bis</label>
                         <input type="datetime-local" class="form-control" id="end-time" th:field="*{endTime}">
+                        <small class="text-danger" th:if="${#fields.hasErrors('endTime')}" th:errors="*{endTime}">Fehlernachricht</small>
                     </div>
                 </div>
                 <div class="form-group">

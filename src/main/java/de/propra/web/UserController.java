@@ -2,6 +2,7 @@ package de.propra.web;
 
 import de.propra.domain.*;
 import de.propra.service.RoomService;
+import de.propra.service.ValidationService;
 import de.propra.service.WorkplaceService;
 import jakarta.validation.Valid;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -53,20 +54,28 @@ public class UserController {
     }
 
     @GetMapping("/bookings/new")
-    public String add(@ModelAttribute("information") BookingInformation information) {
+    public String add(@ModelAttribute("information") BookingInformation information, RedirectAttributes redirectAttributes) {
+        if(redirectAttributes.getAttribute("dateOrderExceptionMessage") != null) {
+            System.out.println(redirectAttributes.getAttribute("dateOrderExceptionMessage"));
+        }
         return "user/new";
     }
 
+    // Anmerkung: Hier kann keine Redirect-View verwendet werden, da sonst die Fehlermeldungen verschwinden
     @PostMapping("/bookings/new")
-    public RedirectView addForm(@Valid @ModelAttribute("information") BookingInformation information, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String addForm(@Valid @ModelAttribute("information") BookingInformation information, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
-            return new RedirectView("/roommate/user/bookings/new");
+            return "user/new";
         }
+
+        // custom validation
+        ValidationService.validateDate(information.getStartTime(), information.getEndTime());
+        if(information.getRoom() != null) ValidationService.validateRoom(roomService, Long.parseLong(information.getRoom()));
 
         redirectAttributes.addFlashAttribute("information", information);
         redirectAttributes.addFlashAttribute("workplaces", getAvailableWorkplaces(information));
 
-        return new RedirectView("/roommate/user/bookings/new");
+        return "redirect:/roommate/user/bookings/new";
     }
 
     // TODO: Implement

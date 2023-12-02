@@ -17,9 +17,9 @@ public class RoomService {
     public List<Room> getAllRooms() {
         return repository.getAllRooms();
     }
-    public boolean roomIsAvailable(String roomName) {
+    public boolean roomIsAvailable(Long roomId) {
         return repository.getAllRooms().stream()
-                .anyMatch(room -> room.getName().equals(roomName));
+                .anyMatch(room -> room.getId().equals(roomId));
     }
 
 

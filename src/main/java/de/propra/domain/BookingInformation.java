@@ -9,9 +9,9 @@ import java.util.List;
 public class BookingInformation {
 
 
-    @NotNull
+    @NotNull(message = "Startzeitpunkt angeben!")
     private @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime startTime;
-    @NotNull
+    @NotNull(message = "Endzeitpunkt angeben!")
     private @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") LocalDateTime endTime;
 
     private String room;

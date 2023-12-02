@@ -21,20 +21,6 @@ public class WorkplaceService {
         return repository.getAllWorkplaces();
     }
 
-//    public Workplace getWorkplace(Long id) throws Exception {
-//        return repository.getAllWorkplaces().stream()
-//                .filter(workplace -> workplace.getId() == id)
-//                .findFirst()
-//                .orElseThrow(Exception::new);
-//    }
-//
-//    public List<Workplace> getWorkplacesWithEquipment(List<Equipment> equipment) {
-//        return repository.getAllWorkplaces().stream()
-//                .filter(workplace -> new HashSet<>(workplace.getEquipment()).containsAll(equipment))
-//                .toList();
-//    }
-
-
 
     public List<Workplace> getAvailableWorkplaces(TimeSpan timeSpan) {
         List<Workplace> workplaces = repository.getAllWorkplaces().stream()
