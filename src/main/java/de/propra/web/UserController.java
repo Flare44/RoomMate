@@ -70,7 +70,7 @@ public class UserController {
 
         // custom validation
         ValidationService.validateDate(information.getStartTime(), information.getEndTime());
-        if(information.getRoom() != null) ValidationService.validateRoom(roomService, Long.parseLong(information.getRoom()));
+        if(information.getRoom() != null && !information.getRoom().equals("")) ValidationService.validateRoom(roomService, Long.parseLong(information.getRoom()));
 
         redirectAttributes.addFlashAttribute("information", information);
         redirectAttributes.addFlashAttribute("workplaces", getAvailableWorkplaces(information));
@@ -88,10 +88,6 @@ public class UserController {
         model.addAttribute("startTime", startTime);
         model.addAttribute("endTime", endTime);
 
-
-//        model.addAttribute("equipment", bookingInformation.getEquipment());
-//        model.addAttribute("startTime", bookingInformation.getStartTime());
-//        model.addAttribute("endTime", bookingInformation.getEndTime());
 
         // Führe Post request durch, wenn bestätigt wird. Dann soll das geadded werden
 

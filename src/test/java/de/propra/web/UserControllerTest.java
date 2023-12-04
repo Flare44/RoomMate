@@ -10,7 +10,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
+import java.time.LocalDateTime;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,6 +30,9 @@ public class UserControllerTest {
 
     @MockBean
     RoomService roomService;
+
+    @MockBean
+    ExceptionHandlerAdvice exceptionHandlerAdvice;
 
     @Test
     @DisplayName("URL 'roommate/user/start' is available and returns the expected view")
@@ -75,7 +82,15 @@ public class UserControllerTest {
         assertThat(html).contains("Endzeitpunkt angeben!");
     }
 
-
-
+    @Test
+    @DisplayName("If Start-Date is after End-Date the Exception-Handler will be called")
+    public void test_5() throws Exception {
+        mvc.perform(post("/roommate/user/bookings/new")
+                        .param("startTime", String.valueOf(LocalDateTime.of(2023, 12, 2, 18, 0)))
+                        .param("endTime", String.valueOf(LocalDateTime.of(2023, 12, 2, 14, 0)))
+                )
+                .andExpect(status().isOk());
+        verify(exceptionHandlerAdvice).handleDateOrderException(any(), any());
+    }
 
 }

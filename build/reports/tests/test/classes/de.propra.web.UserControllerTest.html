@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">6</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.456s</div>
+<div class="counter">0.437s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,9 +79,39 @@
 </tr>
 </thead>
 <tr>
+<td class="success">URL 'roommate/user/start' is available and returns the expected view</td>
+<td class="success">test_0()</td>
+<td class="success">0.278s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">URL 'roommate/user/bookings' is available and returns the expected view</td>
+<td class="success">test_1()</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">URL 'roommate/user/bookings/new' is available and returns the expected view</td>
+<td class="success">test_2()</td>
+<td class="success">0.064s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">All Parameters can be found and casted to the expected objects</td>
+<td class="success">test_3()</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">If Date-input is ignored, there will be suitable validation</td>
 <td class="success">test_4()</td>
-<td class="success">0.456s</td>
+<td class="success">0.056s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">If Start-Date is after End-Date the Exception-Handler will be called</td>
+<td class="success">test_5()</td>
+<td class="success">0.018s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -89,8 +119,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>23:02:58.800 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [de.propra.web.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:02:58.923 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration de.propra.RoomMateApplication for test class de.propra.web.UserControllerTest
+<pre>02:06:52.640 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [de.propra.web.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+02:06:52.784 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration de.propra.RoomMateApplication for test class de.propra.web.UserControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -100,12 +130,12 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.0)
 
-2023-12-02T23:02:59.224+01:00  INFO 26948 --- [    Test worker] de.propra.web.UserControllerTest         : Starting UserControllerTest using Java 19.0.1 with PID 26948 (started by morit in C:\Users\morit\Desktop\WiSe 2023_24\RoomMate)
-2023-12-02T23:02:59.225+01:00  INFO 26948 --- [    Test worker] de.propra.web.UserControllerTest         : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2023-12-02T23:03:01.001+01:00  INFO 26948 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2023-12-02T23:03:01.002+01:00  INFO 26948 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2023-12-02T23:03:01.005+01:00  INFO 26948 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2023-12-02T23:03:01.037+01:00  INFO 26948 --- [    Test worker] de.propra.web.UserControllerTest         : Started UserControllerTest in 2.048 seconds (process running for 2.997)
+2023-12-04T02:06:53.090+01:00  INFO 25196 --- [    Test worker] de.propra.web.UserControllerTest         : Starting UserControllerTest using Java 19.0.1 with PID 25196 (started by morit in C:\Users\morit\Desktop\WiSe 2023_24\RoomMate)
+2023-12-04T02:06:53.091+01:00  INFO 25196 --- [    Test worker] de.propra.web.UserControllerTest         : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-12-04T02:06:54.227+01:00  INFO 25196 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2023-12-04T02:06:54.228+01:00  INFO 25196 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2023-12-04T02:06:54.230+01:00  INFO 25196 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2023-12-04T02:06:54.263+01:00  INFO 25196 --- [    Test worker] de.propra.web.UserControllerTest         : Started UserControllerTest in 1.424 seconds (process running for 3.387)
 </pre>
 </span>
 </div>
@@ -117,7 +147,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.4</a> at 02.12.2023, 23:03:01</p>
+<a href="http://www.gradle.org">Gradle 8.4</a> at 04.12.2023, 02:06:54</p>
 </div>
 </div>
 </body>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="de.propra.service.WorkplaceServiceTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-12-04T01:06:51" hostname="DESKTOP-U77NR89" time="0.974">
+  <properties/>
+  <testcase name="getAvailableWorkplaces(TimeSpan, Room-ID)-Method returns workplaces, that match a certain room-ID" classname="de.propra.service.WorkplaceServiceTest" time="0.94"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan, Equipment, Room-ID)-Method returns workplaces, that match the requirements" classname="de.propra.service.WorkplaceServiceTest" time="0.003"/>
+  <testcase name="addBooking(Workplace-ID, TimeSpan) adds the TimeSpan to the Workplace" classname="de.propra.service.WorkplaceServiceTest" time="0.005"/>
+  <testcase name="After successful booking, another booking for the same workplace in the same time fails" classname="de.propra.service.WorkplaceServiceTest" time="0.002"/>
+  <testcase name="getAllWorkplaces()-Method returns all workplaces from repository" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns all available workplaces from repository, if no collision" classname="de.propra.service.WorkplaceServiceTest" time="0.002"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap after)" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap before)" classname="de.propra.service.WorkplaceServiceTest" time="0.002"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap before and after)" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap exactly)" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there are two collision (collision: overlap before)" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there are two collision (collision: overlap after)" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan, Equipment)-Method returns workplaces, that match the equipment-requirements" classname="de.propra.service.WorkplaceServiceTest" time="0.002"/>
+  <testcase name="getAvailableWorkplaces(TimeSpan, Equipment)-Method returns no workplaces, if equipment-requirements cannot be matched" classname="de.propra.service.WorkplaceServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

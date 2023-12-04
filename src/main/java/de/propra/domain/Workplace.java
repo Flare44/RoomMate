@@ -21,12 +21,15 @@ public class Workplace {
         this.equipment.addAll(equipment);
     }
 
+
     public Workplace(Long id, Room room, List<Equipment> equipment, List<TimeSpan> bookedTimeSpans) {
         this.id = id;
         this.assignedRoom = room;
         this.equipment.addAll(equipment);
         this.bookedTimeSpans.addAll(bookedTimeSpans);
     }
+
+
 
 
 

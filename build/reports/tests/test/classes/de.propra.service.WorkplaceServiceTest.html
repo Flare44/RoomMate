@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - WorkplaceServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>WorkplaceServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/de.propra.service.html">de.propra.service</a> &gt; WorkplaceServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">14</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.963s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">getAllWorkplaces()-Method returns all workplaces from repository</td>
+<td class="success">test_0()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns all available workplaces from repository, if no collision</td>
+<td class="success">test_1()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan, Room-ID)-Method returns workplaces, that match a certain room-ID</td>
+<td class="success">test_11()</td>
+<td class="success">0.940s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan, Equipment, Room-ID)-Method returns workplaces, that match the requirements</td>
+<td class="success">test_12()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addBooking(Workplace-ID, TimeSpan) adds the TimeSpan to the Workplace</td>
+<td class="success">test_13()</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">After successful booking, another booking for the same workplace in the same time fails</td>
+<td class="success">test_14()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap after)</td>
+<td class="success">test_2()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap before)</td>
+<td class="success">test_3()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap before and after)</td>
+<td class="success">test_4()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there is a collision (collision: overlap exactly)</td>
+<td class="success">test_5()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there are two collision (collision: overlap before)</td>
+<td class="success">test_6()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan)-Method returns less workplaces, if there are two collision (collision: overlap after)</td>
+<td class="success">test_7()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan, Equipment)-Method returns workplaces, that match the equipment-requirements</td>
+<td class="success">test_8()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getAvailableWorkplaces(TimeSpan, Equipment)-Method returns no workplaces, if equipment-requirements cannot be matched</td>
+<td class="success">test_9()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.4</a> at 04.12.2023, 02:06:54</p>
+</div>
+</div>
+</body>
+</html>
